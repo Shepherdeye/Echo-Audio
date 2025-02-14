@@ -1,0 +1,44 @@
+
+@import "tailwindcss";
+
+
+a{
+    cursor:pointer;
+}
+button{
+    cursor:pointer;
+}
+button:disabled {
+  background-color: #9ca3af; 
+  cursor: not-allowed; 
+}
+input{
+    cursor:pointer;
+}
+.custom-audio-player {
+    width: 100%;
+    background: #1e1e1e;
+    border-radius: 10px;
+    padding: 5px;
+    color: white;
+  }
+  
+  .custom-audio-player::-webkit-media-controls-panel {
+    background: #333;
+    border-radius: 10px;
+  }
+  
+  .custom-audio-player::-webkit-media-controls-play-button {
+    filter: invert(1);
+  }
+  
+  .custom-audio-player::-webkit-media-controls-current-time-display,
+  .custom-audio-player::-webkit-media-controls-time-remaining-display {
+    color: white;
+  }
+  
+  body {
+    background-color: #111827; /* Dark background */
+    color: white; /* Text color */
+    font-family: Arial, sans-serif; /* Optional: Customize font */
+}
