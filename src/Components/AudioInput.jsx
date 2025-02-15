@@ -15,14 +15,14 @@ function AudioInput({ onAudioSelected }) {
     const streamRef = useRef(null);
     const intervalRef = useRef(null);
 
-    // ✅ Format Time (mm:ss)
+    //  Format Time (mm:ss)
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     };
 
-    // ✅ Start Recording
+    //  Start Recording
     const startRecording = async () => {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         streamRef.current = stream;
@@ -40,13 +40,13 @@ function AudioInput({ onAudioSelected }) {
         setPaused(false);
         setRecordTime(0); // Reset timer
 
-        // ✅ Start Timer
+        //  Start Timer
         intervalRef.current = setInterval(() => {
             setRecordTime((prev) => prev + 1);
         }, 1000);
     };
 
-    // ✅ Pause Recording (Timer Continues)
+    //  Pause Recording (Timer Continues)
     const pauseRecording = () => {
         if (recorderRef.current) {
             recorderRef.current.pauseRecording();
@@ -55,20 +55,20 @@ function AudioInput({ onAudioSelected }) {
         }
     };
 
-    // ✅ Resume Recording
+    // Resume Recording
     const resumeRecording = () => {
         if (recorderRef.current) {
             recorderRef.current.resumeRecording();
             setPaused(false);
 
-            // ✅ Resume Timer
+            //  Resume Timer
             intervalRef.current = setInterval(() => {
                 setRecordTime((prev) => prev + 1);
             }, 1000);
         }
     };
 
-    // ✅ Stop & Save Recording
+    //  Stop & Save Recording
     const stopRecording = () => {
         if (recorderRef.current) {
             recorderRef.current.stopRecording(() => {
@@ -88,14 +88,14 @@ function AudioInput({ onAudioSelected }) {
         clearInterval(intervalRef.current); // Stop timer
     };
 
-    // ✅ Restart Recording
+    //  Restart Recording
     const restartRecording = () => {
         stopRecording();
         setAudioURL(null);
         startRecording();
     };
 
-    // ✅ Handle File Upload
+    //  Handle File Upload
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -142,7 +142,7 @@ function AudioInput({ onAudioSelected }) {
                 )}
             </div>
 
-            {/* 📂 File Upload (Disabled While Recording) */}
+            {/*  File Upload (Disabled While Recording) */}
             {!recording && (
                 <div className="mt-4">
                     <label className="block text-white font-bold mb-2">Upload an Audio File:</label>
@@ -153,13 +153,13 @@ function AudioInput({ onAudioSelected }) {
                             accept="audio/*"
                             onChange={handleFileUpload}
                             className="hidden"
-                            disabled={recording} // ✅ Prevent file upload while recording
+                            disabled={recording} //Prevent file upload while recording
                         />
                     </label>
                 </div>
             )}
 
-            {/* 🎵 Audio Preview */}
+            {/*  Audio Preview */}
             {audioURL && (
                 <div className="mt-5">
                     <h3 className="text-lg font-bold text-white">Audio Preview:</h3>
