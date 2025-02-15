@@ -1,7 +1,7 @@
 function ErrorMessage({ message, onClose }) {
     return (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-80 rounded-lg">
-            <div className="bg-red-500 text-white p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <div className="bg-red-500 w-full h-full text-white p-4 rounded-lg shadow-lg flex flex-col items-center justify-center">
                 <p className="text-lg font-semibold">{message}</p>
                 <button
                     onClick={onClose}

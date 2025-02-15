@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { sendToKateb, sendToNatiq, applyEchoEffect } from "../../utils/api";
 import AudioInput from "../../Components/AudioInput";
 import Processing from "../../Components/Processing";
-import ErrorMessage from "../../Components/ErrorMessage"; // Import Error Component
+import ErrorMessage from "../../Components/ErrorMessage";
 
 function Echo() {
     const [audioFile, setAudioFile] = useState(null);

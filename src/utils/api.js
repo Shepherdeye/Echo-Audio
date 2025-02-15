@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// ✅ Function to send recorded/uploaded audio to Kateb for transcription
+//Function to send recorded/uploaded audio to Kateb for transcription
 export const sendToKateb = async (audioFile) => {
     if (!audioFile) {
         alert("No audio file selected!");
@@ -20,16 +20,16 @@ export const sendToKateb = async (audioFile) => {
         const words = response.data?.json?.words || [];
         const text = words.map(word => word.text).join(" ");
 
-        return text; // ✅ Return transcribed text instead of modifying state
+        return text; // Return transcribed text instead of modifying state
 
     } catch (error) {
         console.error("Error in Kateb:", error);
-        alert("Failed to transcribe audio. Try again!");
+        // alert("Failed to transcribe audio. Try again!");
         return "";
     }
 };
 
-// ✅ Function to send text to Natiq for voice generation
+// Function to send text to Natiq for voice generation
 export const sendToNatiq = async (text) => {
     if (!text.trim()) return { audioURL: null, wordTimings: [] };
 
@@ -60,12 +60,12 @@ export const sendToNatiq = async (text) => {
         return { audioURL, wordTimings };
     } catch (error) {
         console.error("Error in Natiq:", error);
-        alert("Failed to generate speech. Try again!");
+        // alert("Failed to generate speech. Try again!");
         return { audioURL: null, wordTimings: [] };
     }
 };
 
-// ✅ Function to apply echo effect (Repeat last word 3 times)
+// Function to apply echo effect (Repeat last word 3 times)
 export const applyEchoEffect = (text) => {
     if (!text.trim()) return text;
     const words = text.trim().split(/\s+/);
