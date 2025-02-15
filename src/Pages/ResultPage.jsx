@@ -18,7 +18,7 @@ function ResultPage() {
     }, [transcribedText, generatedAudioURL, navigate]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
+        <div className="flex flex-col items-center justify-center min-h-[60vh] bg-gray-900 text-white p-6">
             <h2 className="text-2xl font-bold mb-4">Generated Echo Result</h2>
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl">
 
