@@ -15,8 +15,8 @@ function EchoAudio({ audioURL, isLoading, wordTimings, setHighlightedWordIndex }
                 ({ start, end }) => currentTime >= start && currentTime <= end
             );
 
-            console.log("🎯 Current Audio Time:", currentTime);
-            console.log("🟡 Highlighted Word Index:", currentWordIndex);
+            console.log("Current Audio Time:", currentTime);
+            console.log("Highlighted Word Index:", currentWordIndex);
 
             setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
         };
@@ -31,7 +31,7 @@ function EchoAudio({ audioURL, isLoading, wordTimings, setHighlightedWordIndex }
         <div className="mt-5">
             <h3 className="text-lg font-bold">Generated Echo Audio:</h3>
             {isLoading ? (
-                <div className="flex justify-center items-center mt-3">
+                <div className="flex justify-center items-center mt-1">
                     <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
                 </div>
             ) : (
