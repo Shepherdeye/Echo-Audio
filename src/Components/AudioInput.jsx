@@ -105,7 +105,7 @@ function AudioInput({ onAudioSelected }) {
     };
 
     return (
-        <div className="text-center bg-gray-800 p-5 rounded-xl shadow-lg w-100 mx-auto">
+        <div className="text-center bg-gray-800 p-5 rounded-xl shadow-lg  mx-auto">
             <h3 className="text-lg font-bold mb-3 text-white">Record or Upload Audio</h3>
 
             {/* 🎙️ Recording Timer */}
