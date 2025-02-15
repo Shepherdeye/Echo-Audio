@@ -1,3 +1,6 @@
+
+import React from "react";
+
 function Processing() {
     return (
         <div style={{ zIndex: 999 }} className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70">

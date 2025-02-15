@@ -1,3 +1,5 @@
+import React from "react";
+
 function Transcription({ text, highlightedWordIndex, wordTimings }) {
     if (!text) return null;
 
