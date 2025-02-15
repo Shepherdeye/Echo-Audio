@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useRef } from "react";
 import RecordRTC from "recordrtc";
 import { MdFiberManualRecord } from "react-icons/md";

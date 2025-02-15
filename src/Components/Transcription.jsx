@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState, useEffect } from "react";
 
 function Transcription({ text, wordTimings, audioRef }) {
@@ -14,12 +16,9 @@ function Transcription({ text, wordTimings, audioRef }) {
             setHighlightedWordIndex(index !== -1 ? index : null);
         };
 
-        //  Ensure the event listener is added only when `audioRef.current` is available
         const audioElement = audioRef.current;
         audioElement.addEventListener("timeupdate", updateHighlight);
-
         return () => {
-            //  Check if `audioElement` still exists before removing listener
             if (audioElement) {
                 audioElement.removeEventListener("timeupdate", updateHighlight);
             }
@@ -27,14 +26,13 @@ function Transcription({ text, wordTimings, audioRef }) {
     }, [audioRef, wordTimings]);
 
     return (
-        <div className="p-1 bg-gray-500 rounded-lg text-white text-lg leading-loose mb-3 text-center">
+        <div data-testid="transcription-container" className="p-4 bg-gray-800 rounded-lg text-white text-lg leading-loose">
             {text.split(" ").map((word, index) => (
                 <span
                     key={index}
-                    className={`mx-1 transition-all duration-200 ${index === highlightedWordIndex ? "bg-yellow-400 text-black p-2 rounded" : ""
-                        }`}
+                    className={`mx-1 transition-all duration-200 ${index === highlightedWordIndex ? "bg-yellow-400 text-black px-1 rounded" : ""}`}
                 >
-                    {word}{" "}
+                    {`${word} `}
                 </span>
             ))}
         </div>
