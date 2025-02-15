@@ -9,7 +9,7 @@ function Echo() {
     const [audioFile, setAudioFile] = useState(null);
     const [loading, setLoading] = useState(false);
     const [audioLoading, setAudioLoading] = useState(false);
-    const [error, setError] = useState(null); // 🔴 Track errors
+    const [error, setError] = useState(null); //  Track errors
 
     const navigate = useNavigate();
 
