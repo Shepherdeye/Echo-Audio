@@ -4,41 +4,39 @@ function EchoAudio({ audioURL, isLoading, wordTimings, setHighlightedWordIndex }
     const audioRef = useRef(null);
 
     useEffect(() => {
-        if (!audioRef.current || !wordTimings.length) return;
+        const audioElement = audioRef.current;
+        if (!audioElement) return;
 
-        const updateHighlight = () => {
-            const currentTime = audioRef.current.currentTime * 1000; // Convert seconds to ms
-            let newIndex = null;
+        const handleTimeUpdate = () => {
+            const currentTime = audioElement.currentTime * 1000; // Convert seconds to ms
 
-            for (let i = 0; i < wordTimings.length; i++) {
-                if (currentTime >= wordTimings[i].start && currentTime < wordTimings[i].end) {
-                    newIndex = i;
-                    break;
-                }
-            }
+            // Find which word should be highlighted
+            const currentWordIndex = wordTimings.findIndex(
+                ({ start, end }) => currentTime >= start && currentTime <= end
+            );
 
-            console.log("Current Audio Time:", currentTime, "Highlighted Index:", newIndex); // Debugging
-            setHighlightedWordIndex(newIndex);
+            console.log("🎯 Current Audio Time:", currentTime);
+            console.log("🟡 Highlighted Word Index:", currentWordIndex);
+
+            setHighlightedWordIndex(currentWordIndex !== -1 ? currentWordIndex : null);
         };
 
-        audioRef.current.addEventListener("timeupdate", updateHighlight);
-        return () => audioRef.current.removeEventListener("timeupdate", updateHighlight);
+        audioElement.addEventListener("timeupdate", handleTimeUpdate);
+        return () => {
+            audioElement.removeEventListener("timeupdate", handleTimeUpdate);
+        };
     }, [wordTimings]);
-
-    if (isLoading) {
-        return (
-            <div className="mt-5 flex justify-center items-center">
-                <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
-            </div>
-        );
-    }
-
-    if (!audioURL) return null;
 
     return (
         <div className="mt-5">
             <h3 className="text-lg font-bold">Generated Echo Audio:</h3>
-            <audio ref={audioRef} controls src={audioURL} className="mt-2 w-full custom-audio-player"></audio>
+            {isLoading ? (
+                <div className="flex justify-center items-center mt-3">
+                    <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-blue-500"></div>
+                </div>
+            ) : (
+                <audio ref={audioRef} controls src={audioURL} className="mt-2 w-full"></audio>
+            )}
         </div>
     );
 }

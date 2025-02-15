@@ -1,23 +1,17 @@
-import React from "react";
-
 function Transcription({ text, highlightedWordIndex, wordTimings }) {
-    if (!text) return null;
-
-    const words = text.split(" ").map((word, index) => ({
-        text: word,
-        isHighlighted: wordTimings[index] && index === highlightedWordIndex,
-    }));
+    const words = text.split(" ");
 
     return (
-        <div className="mt-5">
-            <h3 className="text-lg font-bold">Transcribed Text:</h3>
-            <p className="mt-2 bg-gray-800 p-3 rounded-lg text-white text-right" style={{ unicodeBidi: "plaintext" }}>
+        <div className="mt-5 p-4 bg-gray-800 text-white rounded-lg shadow-lg">
+            <h3 className="text-lg font-bold mb-3">Transcription:</h3>
+            <p className="text-lg">
                 {words.map((word, index) => (
                     <span
                         key={index}
-                        className={`mr-1 ${word.isHighlighted ? "bg-yellow-500 p-2 text-black font-bold px-1" : ""}`}
+                        className={`px-1 ${index === highlightedWordIndex ? "bg-yellow-400 text-black font-bold" : ""
+                            }`}
                     >
-                        {word.text} {" "}
+                        {word}{" "}
                     </span>
                 ))}
             </p>

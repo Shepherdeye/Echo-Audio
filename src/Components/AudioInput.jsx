@@ -102,10 +102,9 @@ function AudioInput({ onAudioSelected, hideControls }) {
     };
 
     return (
-        <div className="text-center bg-gray-900 p-5 rounded-xl shadow-lg w-80 mx-auto">
+        <div className="text-center bg-gray-900 p-5 rounded-xl shadow-lg mx-auto">
             {!hideControls && (
                 <>
-                    <h3 className="text-lg font-bold mb-3 text-white">Record or Upload Audio</h3>
                     {recording && (
                         <div className="text-red-500 text-lg font-bold mb-2 animate-pulse">
                             Recording... {formatTime(recordTime)}

@@ -45,7 +45,7 @@ function Echo() {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
-            <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl text-center">
+            <div className="bg-gray-900 p-6 rounded-lg shadow-lg w-full max-w-2xl text-center">
                 <h2 className="text-2xl font-bold mb-4">Record or Upload Audio</h2>
 
                 {/* Audio Input */}
